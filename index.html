@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟数字时钟</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <style type="text/css">
+        #clock{background-color: #B9E1EF}
+        #clock .display{position: absolute}
+        #clock .h1{left: 0px}
+        #clock .h2{left: 32px}
+        #clock .dot1{left: 64px}
+        #clock .m1{left: 96px}
+        #clock .m2{left: 128px}
+        #clock .dot2{left: 160px}
+        #clock .s1{left: 192px}
+        #clock .s2{left: 224px}
+        #clock .clock_num0   {position:absolute;width: 32px;height: 32px;background: url('img/zero.png') no-repeat}
+        #clock .clock_num1    {position:absolute;width: 32px;height: 32px;background: url('img/one.png') no-repeat}
+        #clock .clock_num2    {position:absolute;width: 32px;height: 32px;background: url('img/two.png') no-repeat}
+        #clock .clock_num3  {position:absolute;width: 32px;height: 32px;background: url('img/three.png') no-repeat}
+        #clock .clock_num4   {position:absolute;width: 32px;height: 32px;background: url('img/four.png') no-repeat}
+        #clock .clock_num5   {position:absolute;width: 32px;height: 32px;background: url('img/five.png') no-repeat}
+        #clock .clock_num6    {position:absolute;width: 32px;height: 32px;background: url('img/six.png') no-repeat}
+        #clock .clock_num7  {position:absolute;width: 32px;height: 32px;background: url('img/seven.png') no-repeat}
+        #clock .clock_num8  {position:absolute;width: 32px;height: 32px;background: url('img/eight.png') no-repeat}
+        #clock .clock_num9   {position:absolute;width: 32px;height: 32px;background: url('img/nine.png') no-repeat}
+        #clock .dot    {position:absolute;width: 32px;height: 32px;background: url('img/dot.png') no-repeat}
+    </style>
+</head>
+
+<body>
+    <div id="clock">
+        <div class="display h1" ><span></span></div>
+        <div class="display h2" ><span></span></div>
+        <div class="display dot1" ><span class="dot"></span></div>
+        <div class="display m1" ><span></span></div>
+        <div class="display m2" ><span></span></div>
+        <div class="display dot2" ><span class="dot"></span></div>
+        <div class="display s1" ><span></span></div>
+        <div class="display s2" ><span></span></div>
+    </div>
+<script type="text/javascript">
+    $(function(){
+        var positions = ['h1', 'h2', 'm1', 'm2', 's1', 's2'];
+        setInterval(function () {
+            var date = new Date();
+            var date = new Date();
+            var h = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            h = h < 10 ? ('0' + h) : h;
+            minute = minute < 10 ? ('0' + minute) : minute;
+            second = second < 10 ? ('0' + second) : second;
+            var now =  h +''+minute+''+second;
+
+            for(var i=0;i < positions.length; i++){
+                var a = "#clock ."+positions[i]+" span";
+                $(a+"").attr("class", "clock_num"+now[i]);
+            };
+        }, 1000);
+
+
+
+    });
+</script>
+</body>
+</html>
